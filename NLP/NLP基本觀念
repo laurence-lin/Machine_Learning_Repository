@@ -8,10 +8,15 @@ NLP基本觀念，文本資料，數學模型說明
      為bag of words的方法之一。
 
 Word2Vec: 對每個單字，用一個array(約300長度)來表示。訓練出來的單字特徵為高維度的"詞向量"，訓練時間長只有Google等單位較容易訓練。
-
+  Ex. 火腿 -> [1, 0, 0, 2, 3, 5, 1, 6, 1, 1, ....]
 
 Transformers: 
-
+  使用Word embedding作為model輸入, 加上Attention結構, 捨棄recurrent和convolution而達到更快的訓練效果。
+  model input的word embedding須經訓練, 使輸入的單字embedding後相近的詞距離較近。
+  
+BERT: Transformer的進階版, 不使用word embedding的靜態詞向量, 而是用動態詞向量來代表sentence中的各個word表徵。
+  使用Mask挖空sentence中的任何word,用sentence的其他word來預測被挖空的mask. 訓練model不必建立詞向量, 即可對未見過的sentence句子進行填空, 預測特定word前後文情形下
+  應該會出現什麼word
 
 
 命名實體任務流程:
