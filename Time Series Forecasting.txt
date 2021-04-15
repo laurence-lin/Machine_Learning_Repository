@@ -1,0 +1,7 @@
+時間序列預測方法:
+
+ 1. Statistical Modeling
+ 2. Neural network: Recurrent Network
+ 3. Neural network: 1-D CNN network
+ 4. Hierarchical temporal memory
+
