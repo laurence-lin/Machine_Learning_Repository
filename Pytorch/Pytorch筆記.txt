@@ -1,0 +1,57 @@
+Pytorch: Use tensor as base unit to build deep learning framework
+
+
+
+Note: most of the methods (datasets, models) recommends to create custom class obejct 
+that inherit the parent modules:
+
+class MyDataset(torch.utils.data.Dataset):
+
+class MyModel(torch.nn.Module):
+
+
+
+
+Start: 
+import torch
+
+Create tensor: torch.tensor()
+
+
+Build neural network layer:
+   torch.nn
+
+
+
+Import pretrained models:
+   torch.hub.load()
+   torchvision.models
+
+
+2021.2.19
+
+Decanter AI: for multiple models, we could combine and normalize the results to give an overall feature importance.
+Model stability: observe the standard deviation of model performance.
+
+Some features in PyTorch:
+
+.to(device)
+In pytorch, when we have GPU, it's better to set the model and dataset on same device(both on GPU or CPU) or the model might invoke RuntimeError when accessing the data.
+PyTorch by default set both model and data on CPU, se when we have GPU for speed up, we have to move the Tensor(model and dataset) to GPU device to have the model run on GPU.
+Use torch.nn.Module.to() or torch.Tensor.to()
+Ex: 
+  device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+  model = model.to(device)
+  data = data.to(device)
+
+parameter.requires_grad: set neural network layer's parameter requires_grad = True, means that we would compute gradient for these layers, implying these parameters in layers should be optimzied.
+  On the contrary, if we have some layers that weight need to be fixed, we could set these layers.requires_grad = False to save memory and preserve the already desired layer. 
+  We could later pass these parameters which have gradients to the optimizer.
+
+PyTorch tensor shape: (batch, channels, height, width)
+
+Adaptive Average Pooling: set up output size, then the adapAvgPooling layer would set up stride step and kernel size to fit our needs. 
+Algorithm:
+Stride = (input_size//output_size)  
+Kernel size = input_size - (output_size-1)*stride  
+Padding = 0
