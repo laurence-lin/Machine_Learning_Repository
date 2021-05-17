@@ -1,5 +1,9 @@
 Pytorch: Use tensor as base unit to build deep learning framework
-
+Dynamic graph: 和tensorflow的static graph不同,
+ Static graph: 需先定義session, placeholder. 運算的graph為是先定義的封閉環境, 先定義好候用feed_dict輸入資料來溝通
+ dynamic graph: 不須session等, tensor可直接用變數方式定義，隨時變更長度等
+ 
+ Dynamic graph再input不等長時方便隨時修改, static graph定義好後輸入的大小為固定
 
 
 Note: most of the methods (datasets, models) recommends to create custom class obejct 
